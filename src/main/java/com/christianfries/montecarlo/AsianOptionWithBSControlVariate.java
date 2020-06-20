@@ -85,12 +85,10 @@ public class AsianOptionWithBSControlVariate implements AssetMonteCarloProduct {
 		RandomVariable values = model.getRandomVariableForConstant(0.0);
 
 		
+
 		// Part 1: add code for the valuation of the Asian option here
 
 		
-
-		// Part 2: add a control variate of the Asian option here
-
 		
 
 		// Discounting...
@@ -103,7 +101,26 @@ public class AsianOptionWithBSControlVariate implements AssetMonteCarloProduct {
 		final RandomVariable	monteCarloProbabilitiesAtEvalTime	= model.getMonteCarloWeights(evaluationTime);
 		values = values.mult(numeraireAtEvalTime).div(monteCarloProbabilitiesAtEvalTime);
 
-		return values;
+		
+		
+		/*
+		 * At this point, the RandomVariable values should
+		 * contain the path-wise discounted values (the payoff multiplied
+		 * with the numeraire ratio N(t)/N(T)), such that takng the expectation
+		 * would give you the value of the option.
+		 * 
+		 * But don't take the expectation here
+		 * (it will be done outside of the method).
+		 * 
+		 * Now work on the second part.
+		 * 
+		 * Part 2: add a control variate of the Asian option here
+		 */
+		
+		RandomVariable valuesControled = values;
+		
+		
+		return valuesControled;
 	}
 }
 
