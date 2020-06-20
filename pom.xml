@@ -1,0 +1,66 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>info.quantlab</groupId>
+	<artifactId>numerical-methods-controlvariate-exercise</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Numerical Methods Exercises - Monte-Carlo Control Variate</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<junit.jupiter.version>5.6.2</junit.jupiter.version>
+		<finmath-lib.version>5.0.2</finmath-lib.version>
+		<!-- maven plugins -->
+		<compiler-plugin.version>3.8.1</compiler-plugin.version>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${compiler-plugin.version}</version>
+				<configuration>
+					<source>11</source>
+					<target>11</target>
+					<compilerVersion>11</compilerVersion>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.2</version>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>info.quantlab</groupId>
+			<artifactId>numerical-methods-lecture</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>${junit.jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<repositories>
+		<!--
+		<repository>
+			<id>github</id>
+			<name>GitHub qntlb Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/qntlb/numerical-methods-computerarithmetic-exercise</url>
+		</repository>
+		 -->
+		<repository>
+			<id>lecture-maven-repo</id>
+			<url>https://raw.githubusercontent.com/qntlb/numerical-methods-lecture/master/local-maven-repo</url>
+		</repository>
+	</repositories>
+
+</project>
