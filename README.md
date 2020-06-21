@@ -30,7 +30,7 @@ And most importantly
 ## Hints
 
 The valuation method `getValue` takes as argument a model implementing `AssetModelMonteCarloSimulationModel`.
-This interface is comparably parsimonious as it only allow get the value of the asset process
+This interface is comparably parsimonious as it only allows to get the value of the asset process
 and the numeraire.
 
 In order to construct a control variate it may be necessary to get more information about
