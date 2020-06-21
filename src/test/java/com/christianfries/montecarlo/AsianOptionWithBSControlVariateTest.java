@@ -26,7 +26,7 @@ public class AsianOptionWithBSControlVariateTest {
 			System.out.println("Sorry, the test failed.");
 		}
 		else {
-			System.out.println("Congratulation! You solved the exercise.");
+			System.out.println("Congratulation! You solved this part of the exercise.");
 		}
 
 		System.out.println("_".repeat(79));
@@ -46,7 +46,7 @@ public class AsianOptionWithBSControlVariateTest {
 			System.out.println("Sorry, the test failed.");
 		}
 		else {
-			System.out.println("Congratulation! You solved the exercise.");
+			System.out.println("Congratulation! You solved this part of the exercise.");
 		}
 
 		System.out.println("_".repeat(79));
@@ -66,7 +66,7 @@ public class AsianOptionWithBSControlVariateTest {
 			System.out.println("Sorry, the test failed.");
 		}
 		else {
-			System.out.println("Congratulation! You solved the exercise.");
+			System.out.println("Congratulation! You solved this part of the exercise.");
 		}
 
 		System.out.println("_".repeat(79));
