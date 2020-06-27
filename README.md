@@ -36,7 +36,7 @@ and the numeraire.
 In order to construct a control variate it may be necessary to get more information about
 the `ProcessModel` used to construct the stochastic process.
 
-We will call the `getValue` with a `MonteCarloBlackScholesModel` and you can rely on this. Hence, you can
+We will call the `getValue` with a `MonteCarloAssetModel` and calling `getModel()` on this object will return a `BlackScholesModel`. You can rely on this to obtain the model parameters we used in the test. Hence, you can
 get the model properties via the following code:
 
 	net.finmath.montecarlo.assetderivativevaluation.models.BlackScholesModel processModel = (BlackScholesModel) ((MonteCarloAssetModel)model).getModel();
