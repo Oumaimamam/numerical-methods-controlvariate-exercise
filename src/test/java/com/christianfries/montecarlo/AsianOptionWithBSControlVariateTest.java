@@ -60,7 +60,7 @@ public class AsianOptionWithBSControlVariateTest {
 		
 		System.out.println("Testing " + classToTest.getCanonicalName());
 		
-		boolean success = AsianOptionWithBSControlVariateChecker.check(classToTest, "valuation");
+		boolean success = AsianOptionWithBSControlVariateChecker.check(classToTest, "control");
 
 		if(!success) {
 			System.out.println("Sorry, the test failed.");
