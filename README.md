@@ -4,12 +4,12 @@ In this exercise you should implement a Monte-Carlo control variate to improve
 the convergence of the Monte-Carlo integration by reducing the variance.
 
 A control variate is (usually) product and model dependent. This is a clear
-disadvantage. Nevertheless, it can achieve impressive improvements.
+disadvantage of the method. Nevertheless, it can achieve impressive improvements.
 
 In this exercise we consider a Black-Scholes model (as model) and an Asian option
 (as product).
 
-## Implement an Asian Option valuation with a Control Variate.
+## Implement an Asian Option valuation under the Black-Scholes Model with a Control Variate.
 
 Implement a class with the following properties:
 
@@ -24,20 +24,28 @@ The payoff of the Asian option is max(1/n * sum S(T_i)-K,0) paid in T, where T_i
 And most importantly
 
 - The Monte-Carlo valuation uses a control variate to improve the accuracy of the valuation
-(in probability, i.e. for most cases) is a Black-Scholes model is used.
+(in probability, i.e. for most cases) if a Black-Scholes model is used.
 
+## Submission of the Solution
+
+You may just complete the stub implementation provided in the repository in
+```
+info.quantlab.numericalmethods.assignments.montecarlo.controlvariate.AsianOptionWithBSControlVariate
+```
+Alternatively, if you provide your own implementation of a class implementing `AssetMonteCarloProduct` to value an Asian option, you may just return an object of your class in the method `getAsianOption` of `AsianOptionWithBSControlVariateSolution`. Remark: Our unit test will call this method to test your implementation.
 
 ## Hints
 
 The valuation method `getValue` takes as argument a model implementing `AssetModelMonteCarloSimulationModel`.
 This interface is comparably parsimonious as it only allows to get the value of the asset process S
-and the numeraire N. At this point the model of S may be almost anything.
+and the numeraire N (and some information on thes simulation time discretization).
+At this point the model of S may be almost anything.
 
 In order to construct a control variate it may be necessary to get more information about
 the `ProcessModel` used to construct the stochastic process.
 
-When we test your implementation, we will call the `getValue` with a `MonteCarloAssetModel` and calling `getModel()` on this object will return a `BlackScholesModel`. You can rely on this to obtain the model parameters we used in the test. Hence, you can
-get the model properties via the following code:
+When we test your implementation, we will call the `getValue` with a `MonteCarloAssetModel` and calling `getModel()` on this object will return a `BlackScholesModel`. You can rely on this to obtain the model parameters we used in the test (but you could
+implement an Exception handling if we don't do it). Hence, you can get the model properties via the following code:
 
 	net.finmath.montecarlo.assetderivativevaluation.models.BlackScholesModel processModel = (BlackScholesModel) ((MonteCarloAssetModel)model).getModel();
 	double initialValueOfStock = model.getAssetValue(0, 0).doubleValue();
