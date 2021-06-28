@@ -1,18 +1,9 @@
-package com.christianfries.montecarlo;
-
-import java.util.function.DoubleUnaryOperator;
-import java.util.function.Function;
-import java.util.stream.DoubleStream;
+package info.quantlab.numericalmethods.assignments.montecarlo.controlvariate;
 
 import net.finmath.exception.CalculationException;
-import net.finmath.functions.AnalyticFormulas;
 import net.finmath.montecarlo.assetderivativevaluation.AssetModelMonteCarloSimulationModel;
-import net.finmath.montecarlo.assetderivativevaluation.MonteCarloAssetModel;
-import net.finmath.montecarlo.assetderivativevaluation.models.BlackScholesModel;
 import net.finmath.montecarlo.assetderivativevaluation.products.AssetMonteCarloProduct;
-import net.finmath.montecarlo.assetderivativevaluation.products.EuropeanOption;
 import net.finmath.stochastic.RandomVariable;
-import net.finmath.stochastic.Scalar;
 import net.finmath.time.TimeDiscretization;
 
 /**
@@ -100,8 +91,6 @@ public class AsianOptionWithBSControlVariate implements AssetMonteCarloProduct {
 		final RandomVariable	numeraireAtEvalTime					= model.getNumeraire(evaluationTime);
 		final RandomVariable	monteCarloProbabilitiesAtEvalTime	= model.getMonteCarloWeights(evaluationTime);
 		values = values.mult(numeraireAtEvalTime).div(monteCarloProbabilitiesAtEvalTime);
-
-		
 		
 		/*
 		 * At this point, the RandomVariable values should

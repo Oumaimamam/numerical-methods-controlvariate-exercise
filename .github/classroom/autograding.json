@@ -13,7 +13,7 @@
     {
       "name": "Unit Tests - Testing your Application: Accuracy Test",
       "setup": "",
-      "run": "bash -c \"set -o pipefail; mvn -q -B -Dtest=AsianOptionWithBSControlVariateTest#testAccuracy -Dorg.slf4j.simpleLogger.defaultLogLevel=ERROR test | grep -vF [ERROR]\"",
+      "run": "bash -c \"set -o pipefail; mvn -q -B -Dtest=AsianOptionWithBSControlVariateTest#testVarianceReductionWeak -Dorg.slf4j.simpleLogger.defaultLogLevel=ERROR test | grep -vF [ERROR]\"",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -23,7 +23,7 @@
     {
       "name": "Unit Tests - Testing your Application: Stronger Control Variate Test",
       "setup": "",
-      "run": "bash -c \"set -o pipefail; mvn -q -B -Dtest=AsianOptionWithBSControlVariateTest#testControlVariate -Dorg.slf4j.simpleLogger.defaultLogLevel=ERROR test | grep -vF [ERROR]\"",
+      "run": "bash -c \"set -o pipefail; mvn -q -B -Dtest=AsianOptionWithBSControlVariateTest#testVarianceReductionStrong -Dorg.slf4j.simpleLogger.defaultLogLevel=ERROR test | grep -vF [ERROR]\"",
       "input": "",
       "output": "",
       "comparison": "included",

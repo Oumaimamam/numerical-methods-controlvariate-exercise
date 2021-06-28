@@ -1,10 +1,11 @@
-package com.christianfries.montecarlo;
+package info.quantlab.numericalmethods.assignments.montecarlo.controlvariate;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 
-import info.quantlab.numericalmethods.lecture.montecarlo.check.AsianOptionWithBSControlVariateChecker;
+import info.quantlab.numericalmethods.assignments.montecarlo.check.AsianOptionWithBSControlVariateAssignment;
+import info.quantlab.numericalmethods.assignments.montecarlo.check.AsianOptionWithBSControlVariateChecker;
 
 /**
  * This class tests the implementation of your class.
@@ -14,13 +15,13 @@ import info.quantlab.numericalmethods.lecture.montecarlo.check.AsianOptionWithBS
  */
 public class AsianOptionWithBSControlVariateTest {
 
+	private static final AsianOptionWithBSControlVariateAssignment solution = new AsianOptionWithBSControlVariateSolution();;
+
 	@Test
 	void testBasicFunctionality() {
-		Class<?> classToTest = AsianOptionWithBSControlVariate.class;
+		System.out.println("Testing basic fuctionality of " + solution.getClass().getCanonicalName());
 		
-		System.out.println("Testing " + classToTest.getCanonicalName());
-		
-		boolean success = AsianOptionWithBSControlVariateChecker.check(classToTest, "basic");
+		boolean success = AsianOptionWithBSControlVariateChecker.check(solution, "basic");
 
 		if(!success) {
 			System.out.println("Sorry, the test failed.");
@@ -35,12 +36,10 @@ public class AsianOptionWithBSControlVariateTest {
 	}
 
 	@Test
-	void testAccuracy() {
-		Class<?> classToTest = AsianOptionWithBSControlVariate.class;
+	void testVarianceReductionWeak() {
+		System.out.println("Testing accuracy (weak) of " + solution.getClass().getCanonicalName());
 		
-		System.out.println("Testing " + classToTest.getCanonicalName());
-		
-		boolean success = AsianOptionWithBSControlVariateChecker.check(classToTest, "accuracy");
+		boolean success = AsianOptionWithBSControlVariateChecker.check(solution, "weak");
 
 		if(!success) {
 			System.out.println("Sorry, the test failed.");
@@ -55,12 +54,10 @@ public class AsianOptionWithBSControlVariateTest {
 	}
 
 	@Test
-	void testControlVariate() {
-		Class<?> classToTest = AsianOptionWithBSControlVariate.class;
+	void testVarianceReductionStrong() {
+		System.out.println("Testing accuracy (strong) of " + solution.getClass().getCanonicalName());
 		
-		System.out.println("Testing " + classToTest.getCanonicalName());
-		
-		boolean success = AsianOptionWithBSControlVariateChecker.check(classToTest, "control");
+		boolean success = AsianOptionWithBSControlVariateChecker.check(solution, "strong");
 
 		if(!success) {
 			System.out.println("Sorry, the test failed.");

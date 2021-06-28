@@ -30,13 +30,13 @@ And most importantly
 ## Hints
 
 The valuation method `getValue` takes as argument a model implementing `AssetModelMonteCarloSimulationModel`.
-This interface is comparably parsimonious as it only allows to get the value of the asset process
-and the numeraire.
+This interface is comparably parsimonious as it only allows to get the value of the asset process S
+and the numeraire N. At this point the model of S may be almost anything.
 
 In order to construct a control variate it may be necessary to get more information about
 the `ProcessModel` used to construct the stochastic process.
 
-We will call the `getValue` with a `MonteCarloAssetModel` and calling `getModel()` on this object will return a `BlackScholesModel`. You can rely on this to obtain the model parameters we used in the test. Hence, you can
+When we test your implementation, we will call the `getValue` with a `MonteCarloAssetModel` and calling `getModel()` on this object will return a `BlackScholesModel`. You can rely on this to obtain the model parameters we used in the test. Hence, you can
 get the model properties via the following code:
 
 	net.finmath.montecarlo.assetderivativevaluation.models.BlackScholesModel processModel = (BlackScholesModel) ((MonteCarloAssetModel)model).getModel();
