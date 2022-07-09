@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import info.quantlab.numericalmethods.assignments.montecarlo.check.AsianOptionWithBSControlVariateAssignment;
 import info.quantlab.numericalmethods.assignments.montecarlo.check.AsianOptionWithBSControlVariateChecker;
+import info.quantlab.numericalmethods.assignments.montecarlo.check.AsianOptionWithBSControlVariateChecker.CHECK;
 
 /**
  * This class tests the implementation of your class.
@@ -19,55 +20,26 @@ public class AsianOptionWithBSControlVariateTest {
 
 	@Test
 	void testBasicFunctionality() {
-		System.out.println("Testing basic fuctionality of " + solution.getClass().getCanonicalName());
-		
-		boolean success = AsianOptionWithBSControlVariateChecker.check(solution, "basic");
-
-		if(!success) {
-			System.out.println("Sorry, the test failed.");
-		}
-		else {
-			System.out.println("Congratulation! You solved this part of the exercise.");
-		}
-
-		System.out.println("_".repeat(79));
-
-		if(!success) fail();
+		if(!AsianOptionWithBSControlVariateChecker.check(new AsianOptionWithBSControlVariateSolution(), CHECK.BASIC)) fail();
 	}
 
 	@Test
 	void testVarianceReductionWeak() {
-		System.out.println("Testing accuracy (weak) of " + solution.getClass().getCanonicalName());
-		
-		boolean success = AsianOptionWithBSControlVariateChecker.check(solution, "weak");
-
-		if(!success) {
-			System.out.println("Sorry, the test failed.");
-		}
-		else {
-			System.out.println("Congratulation! You solved this part of the exercise.");
-		}
-
-		System.out.println("_".repeat(79));
-
-		if(!success) fail();
+		if(!AsianOptionWithBSControlVariateChecker.check(new AsianOptionWithBSControlVariateSolution(), CHECK.WEAK)) fail();
 	}
 
 	@Test
 	void testVarianceReductionStrong() {
-		System.out.println("Testing accuracy (strong) of " + solution.getClass().getCanonicalName());
-		
-		boolean success = AsianOptionWithBSControlVariateChecker.check(solution, "strong");
-
-		if(!success) {
-			System.out.println("Sorry, the test failed.");
-		}
-		else {
-			System.out.println("Congratulation! You solved this part of the exercise.");
-		}
-
-		System.out.println("_".repeat(79));
-
-		if(!success) fail();
+		if(!AsianOptionWithBSControlVariateChecker.check(new AsianOptionWithBSControlVariateSolution(), CHECK.STRONG)) fail();
+	}
+	
+	@Test
+	void testVarianceReductionStronger() {
+		if(!AsianOptionWithBSControlVariateChecker.check(new AsianOptionWithBSControlVariateSolution(), CHECK.STRONGER)) fail();
+	}
+	
+	@Test
+	void testVarianceReductionStrongest() {
+		if(!AsianOptionWithBSControlVariateChecker.check(new AsianOptionWithBSControlVariateSolution(), CHECK.STRONGEST)) fail();
 	}
 }
