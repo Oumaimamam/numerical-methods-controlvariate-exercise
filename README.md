@@ -29,9 +29,11 @@ And most importantly
 ## Submission of the Solution
 
 You may just complete the stub implementation provided in the repository in
+
 ```
 info.quantlab.numericalmethods.assignments.montecarlo.controlvariate.AsianOptionWithBSControlVariate
 ```
+
 Alternatively, if you provide your own implementation of a class implementing `AssetMonteCarloProduct` to value an Asian option, you may just return an object of your class in the method `getAsianOption` of `AsianOptionWithBSControlVariateSolution`. Remark: Our unit test will call this method to test your implementation.
 
 ## Hints
