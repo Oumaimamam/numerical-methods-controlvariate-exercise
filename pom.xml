@@ -10,7 +10,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<junit.jupiter.version>5.6.2</junit.jupiter.version>
-		<finmath-lib.version>5.0.2</finmath-lib.version>
+		<finmath-lib.version>6.0.1</finmath-lib.version>
 		<!-- maven plugins -->
 		<compiler-plugin.version>3.8.1</compiler-plugin.version>
 	</properties>
@@ -38,7 +38,7 @@
 		<dependency>
 			<groupId>info.quantlab</groupId>
 			<artifactId>numerical-methods-lecture</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.0.2-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
