@@ -95,7 +95,7 @@ public class AsianOptionWithBSControlVariate implements AssetMonteCarloProduct {
 		/*
 		 * At this point, the RandomVariable values should
 		 * contain the path-wise discounted values (the payoff multiplied
-		 * with the numeraire ratio N(t)/N(T)), such that takng the expectation
+		 * with the numeraire ratio N(t)/N(T)), such that taking the expectation
 		 * would give you the value of the option.
 		 * 
 		 * But don't take the expectation here
