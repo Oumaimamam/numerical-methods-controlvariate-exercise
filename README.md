@@ -80,8 +80,19 @@ Using 200,000 paths, the standard error then is &epsilon; = 0.00165.
 
 Using control variates it is possible to bring the standard error below 0.0009 (comparably easy) and even below 0.0001 (a bit more difficult). This would correspond to using 200-times more Monte-Carlo simulation times (requiring 200-times the computation time).
 
+## Unit Tests and GitHub Autograding
 
-### Working in Eclipse
+The project comes with a unit test that runs four test
+
+- basic: (5 Points) Passes if the valuation of the Asian option appears to be OK (no variance reduction required).
+- weak: (5 Points) Passes if at least some variance reduction is performed.
+- strong: (5 Points) Passes if good variance reduction is performed.
+- stronger: (5 Points) Passes if very good variance reduction is performed.
+- strongest: (2 Points) Passes if extremely good variance reduction is performed.
+
+*Note: You may consider the exercise solved if you achieve 15 or 20 points, since this is already a good variance reduction. However, the autograding will show a failure unless you reach the full 22 points.*
+
+## Working in Eclipse
 
 Import this git repository into Eclipse and start working.
 
