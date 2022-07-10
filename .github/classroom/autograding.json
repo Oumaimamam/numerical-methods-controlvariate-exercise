@@ -18,7 +18,7 @@
       "output": "",
       "comparison": "included",
       "timeout": 10,
-      "points": 10
+      "points": 5
     },
     {
       "name": "Unit Tests - Testing your Application: Stronger Control Variate Test",
@@ -29,6 +29,26 @@
       "comparison": "included",
       "timeout": 10,
       "points": 5
+    },
+    {
+      "name": "Unit Tests - Testing your Application: Stronger Control Variate Test",
+      "setup": "",
+      "run": "bash -c \"set -o pipefail; mvn -q -B -Dtest=AsianOptionWithBSControlVariateTest#testVarianceReductionStronger -Dorg.slf4j.simpleLogger.defaultLogLevel=ERROR test | grep -vF [ERROR]\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 5
+    },
+    {
+      "name": "Unit Tests - Testing your Application: Stronger Control Variate Test",
+      "setup": "",
+      "run": "bash -c \"set -o pipefail; mvn -q -B -Dtest=AsianOptionWithBSControlVariateTest#testVarianceReductionStrongest -Dorg.slf4j.simpleLogger.defaultLogLevel=ERROR test | grep -vF [ERROR]\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 2
     }
   ]
 }
