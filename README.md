@@ -38,6 +38,8 @@ Alternatively, if you provide your own implementation of a class implementing `A
 
 ## Hints
 
+### Getting the parameters of the underlying Black-Scholes model (the `ProcessModel`)
+
 The valuation method `getValue` takes as argument a model implementing `AssetModelMonteCarloSimulationModel`.
 This interface is comparably parsimonious as it only allows to get the value of the asset process S
 and the numeraire N (and some information on thes simulation time discretization).
@@ -49,10 +51,29 @@ the `ProcessModel` used to construct the stochastic process.
 When we test your implementation, we will call the `getValue` with a `MonteCarloAssetModel` and calling `getModel()` on this object will return a `BlackScholesModel`. You can rely on this to obtain the model parameters we used in the test (but you could
 implement an Exception handling if we don't do it). Hence, you can get the model properties via the following code:
 
+```
 	net.finmath.montecarlo.assetderivativevaluation.models.BlackScholesModel processModel = (BlackScholesModel) ((MonteCarloAssetModel)model).getModel();
 	double initialValueOfStock = model.getAssetValue(0, 0).doubleValue();
 	double riskFreeRate = processModel.getRiskFreeRate().doubleValue();
 	double volatility = processModel.getVolatility().doubleValue();
+```
+
+Note (Technical Detail): Since the library allows to create object implementing `AssetModelMonteCarloSimulationModel` in different ways, a slightly more robust way of getting the underlying model is to use the utility function
+
+```
+info.quantlab.numericalmethods.lecture.montecarlo.models.Utils.getBlackScholesModelFromMonteCarloModel
+```
+
+So you may get the model parameters via
+
+```
+		// Get model parameters - making strong assumption on the model
+		net.finmath.montecarlo.assetderivativevaluation.models.BlackScholesModel processModel = info.quantlab.numericalmethods.lecture.montecarlo.models.Utils.getBlackScholesModelFromMonteCarloModel(model);
+		double initialValue = model.getAssetValue(0, 0).doubleValue();
+		double riskFreeRate = processModel.getRiskFreeRate().doubleValue();
+		double volatility = processModel.getVolatility().doubleValue();
+```
+
 
 ### Test data
 
