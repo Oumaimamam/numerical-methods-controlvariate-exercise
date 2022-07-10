@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import info.quantlab.numericalmethods.assignments.montecarlo.check.AsianOptionWithBSControlVariateAssignment;
 import info.quantlab.numericalmethods.assignments.montecarlo.check.AsianOptionWithBSControlVariateChecker;
-import info.quantlab.numericalmethods.assignments.montecarlo.check.AsianOptionWithBSControlVariateChecker.CHECK;
+import info.quantlab.numericalmethods.assignments.montecarlo.check.AsianOptionWithBSControlVariateChecker.Check;
 
 /**
  * This class tests the implementation of your class.
@@ -16,30 +16,28 @@ import info.quantlab.numericalmethods.assignments.montecarlo.check.AsianOptionWi
  */
 public class AsianOptionWithBSControlVariateTest {
 
-	private static final AsianOptionWithBSControlVariateAssignment solution = new AsianOptionWithBSControlVariateSolution();;
-
 	@Test
 	void testBasicFunctionality() {
-		if(!AsianOptionWithBSControlVariateChecker.check(new AsianOptionWithBSControlVariateSolution(), CHECK.BASIC)) fail();
+		if(!AsianOptionWithBSControlVariateChecker.check(new AsianOptionWithBSControlVariateSolution(), Check.BASIC)) fail();
 	}
 
 	@Test
 	void testVarianceReductionWeak() {
-		if(!AsianOptionWithBSControlVariateChecker.check(new AsianOptionWithBSControlVariateSolution(), CHECK.WEAK)) fail();
+		if(!AsianOptionWithBSControlVariateChecker.check(new AsianOptionWithBSControlVariateSolution(), Check.WEAK)) fail();
 	}
 
 	@Test
 	void testVarianceReductionStrong() {
-		if(!AsianOptionWithBSControlVariateChecker.check(new AsianOptionWithBSControlVariateSolution(), CHECK.STRONG)) fail();
+		if(!AsianOptionWithBSControlVariateChecker.check(new AsianOptionWithBSControlVariateSolution(), Check.STRONG)) fail();
 	}
 	
 	@Test
 	void testVarianceReductionStronger() {
-		if(!AsianOptionWithBSControlVariateChecker.check(new AsianOptionWithBSControlVariateSolution(), CHECK.STRONGER)) fail();
+		if(!AsianOptionWithBSControlVariateChecker.check(new AsianOptionWithBSControlVariateSolution(), Check.STRONGER)) fail();
 	}
 	
 	@Test
 	void testVarianceReductionStrongest() {
-		if(!AsianOptionWithBSControlVariateChecker.check(new AsianOptionWithBSControlVariateSolution(), CHECK.STRONGEST)) fail();
+		if(!AsianOptionWithBSControlVariateChecker.check(new AsianOptionWithBSControlVariateSolution(), Check.STRONGEST)) fail();
 	}
 }

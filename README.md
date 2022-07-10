@@ -74,9 +74,12 @@ You may test you program with the following data.
 	private final double	strike = 1.05;
 	private final TimeDiscretization timesForAveraging = new TimeDiscretizationFromArray(5.0, 6.0, 7.0, 8.0, 9.0, 10.0);
 
-For this model and product the value of the product is approximately &mu; = 0.3724.
-The Monte-Carlo standard deviation is approximately &sigma; = 0.082.
-Using 20,000,000 paths, the standard error then is &epsilon; = 0.000183.
+For this model and product the value of the product is approximately &mu; = 0.372.
+The Monte-Carlo standard deviation is approximately &sigma; = 0.74.
+Using 200,000 paths, the standard error then is &epsilon; = 0.00165.
+
+Using control variates it is possible to bring the standard error below 0.0009 (comparably easy) and even below 0.0001 (a bit more difficult). This would correspond to using 200-times more Monte-Carlo simulation times (requiring 200-times the computation time).
+
 
 ### Working in Eclipse
 
