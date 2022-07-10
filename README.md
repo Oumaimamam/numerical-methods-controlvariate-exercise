@@ -58,22 +58,18 @@ implement an Exception handling if we don't do it). Hence, you can get the model
 	double volatility = processModel.getVolatility().doubleValue();
 ```
 
-Note (Technical Detail): Since the library allows to create object implementing `AssetModelMonteCarloSimulationModel` in different ways, a slightly more robust way of getting the underlying model is to use the utility function
+Note (technical detail): Since the library allows to create object implementing `AssetModelMonteCarloSimulationModel` in different ways, a slightly more robust way of getting the underlying model is to use the utility function
 
 ```
 info.quantlab.numericalmethods.lecture.montecarlo.models.Utils.getBlackScholesModelFromMonteCarloModel
 ```
 
-So you may get the model parameters via
+So you may get the underlying `BlackScholesModel` via
 
 ```
 	// Get model parameters - making strong assumption on the model
 	net.finmath.montecarlo.assetderivativevaluation.models.BlackScholesModel processModel = info.quantlab.numericalmethods.lecture.montecarlo.models.Utils.getBlackScholesModelFromMonteCarloModel(model);
-	double initialValue = model.getAssetValue(0, 0).doubleValue();
-	double riskFreeRate = processModel.getRiskFreeRate().doubleValue();
-	double volatility = processModel.getVolatility().doubleValue();
 ```
-
 
 ### Test data
 
