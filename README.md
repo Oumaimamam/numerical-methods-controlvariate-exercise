@@ -41,9 +41,9 @@ Alternatively, if you provide your own implementation of a class implementing `A
 ### Getting the parameters of the underlying Black-Scholes model (the `ProcessModel`)
 
 The valuation method `getValue` takes as argument a model implementing `AssetModelMonteCarloSimulationModel`.
-This interface is comparably parsimonious as it only allows to get the value of the asset process S
-and the numeraire N (and some information on thes simulation time discretization).
-At this point the model of S may be almost anything.
+This interface is comparably parsimonious as it only allows to get the value of the asset process *S*
+and the numeraire *N* (and some information on the simulation time discretization).
+At this point the model of *S* may be almost anything (Black-Scholes, Bachelier, Heston, etc.).
 
 In order to construct a control variate it may be necessary to get more information about
 the `ProcessModel` used to construct the stochastic process.
@@ -58,7 +58,7 @@ implement an Exception handling if we don't do it). Hence, you can get the model
 	double volatility = processModel.getVolatility().doubleValue();
 ```
 
-Note (technical detail): Since the library allows to create object implementing `AssetModelMonteCarloSimulationModel` in different ways, a slightly more robust way of getting the underlying model is to use the utility function
+Note (technical detail): Since the library allows to create objects implementing `AssetModelMonteCarloSimulationModel` in different ways, a slightly more robust way of getting the underlying model is to use the utility function
 
 ```
 info.quantlab.numericalmethods.lecture.montecarlo.models.Utils.getBlackScholesModelFromMonteCarloModel
@@ -67,7 +67,6 @@ info.quantlab.numericalmethods.lecture.montecarlo.models.Utils.getBlackScholesMo
 So you may get the underlying `BlackScholesModel` via
 
 ```
-	// Get model parameters - making strong assumption on the model
 	net.finmath.montecarlo.assetderivativevaluation.models.BlackScholesModel processModel = info.quantlab.numericalmethods.lecture.montecarlo.models.Utils.getBlackScholesModelFromMonteCarloModel(model);
 ```
 
@@ -97,7 +96,7 @@ For this model and product the value of the product is approximately &mu; = 0.37
 The Monte-Carlo standard deviation is approximately &sigma; = 0.74.
 Using 200,000 paths, the standard error then is &epsilon; = 0.00165.
 
-Using control variates it is possible to bring the standard error below 0.0009 (comparably easy) and even below 0.0001 (a bit more difficult). This would correspond to using 200-times more Monte-Carlo simulation times (requiring 200-times the computation time).
+Using control variates it is possible to bring the standard error below 0.0009 (comparably easy) and even below 0.0001 (a bit more difficult). This would correspond to using 200-times more Monte-Carlo simulation paths (requiring 200-times the computation time).
 
 ## Unit Tests and GitHub Autograding
 
