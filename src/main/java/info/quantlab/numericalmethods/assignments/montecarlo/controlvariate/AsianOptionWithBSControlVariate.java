@@ -12,12 +12,13 @@ import net.finmath.time.TimeDiscretization;
  * Given a model for an asset <i>S</i>, the Asian option with strike <i>K</i>, maturity <i>T</i>
  * and averaging points <i>T<sub>i</sub></i> for <i>i = 1,...,n</i> pays
  * <br>
- * 	<i>max(A(T) - K , 0)</i> in <i>T</i>
+ * 	<i>max(sign (A(T) - K) , 0)</i> in <i>T</i>
  * <br>
  * where
  * <br>
  * 	<i>A(T) = 1/n (S(T<sub>1</sub>)+ ... + S(T<sub>n</sub>))</i>
  * <br>
+ * and sign is (usually) either +1 or -1. For +1 this is a call option max(A(T)-K,0). For -1 this is a put option with payoff max(K-A(T),0).
  *
  * @author Christian Fries
  * @version 1.2
@@ -28,35 +29,39 @@ public class AsianOptionWithBSControlVariate implements AssetMonteCarloProduct {
 	private final double strike;
 	private final TimeDiscretization timesForAveraging;
 	private final Integer underlyingIndex;
+	private final Double callOrPutSign;
 
 
 	/**
 	 * Construct a product representing an Asian option on an asset S (where S the asset with index 0 from the model - single asset case).
 	 * A(T) = 1/n sum_{i=1,...,n} S(t_i), where t_i are given observation times.
 	 *
-	 * @param strike The strike K in the option payoff max(A(T)-K,0).
-	 * @param maturity The maturity T in the option payoff maxAS(T)-K,0)
+	 * @param strike The strike K in the option payoff max( sign * (A(T)-K), 0)
+	 * @param maturity The maturity T in the option payoff max( sign * (A(T)-K), 0)
 	 * @param timesForAveraging The times t_i used in the calculation of A(T) = 1/n sum_{i=1,...,n} S(t_i).
 	 * @param underlyingIndex The index of the asset S to be fetched from the model
+	 * @param callOrPutSign The parameter sign in the payoff max( sign * (A(T)-K), 0) (usually either +1 or -1).
 	 */
-	public AsianOptionWithBSControlVariate(final Double maturity, final Double strike, final TimeDiscretization timesForAveraging, final Integer underlyingIndex) {
+	public AsianOptionWithBSControlVariate(final Double maturity, final Double strike, final TimeDiscretization timesForAveraging, final Integer underlyingIndex, Double callOrPutSign) {
 		super();
 		this.maturity = maturity;
 		this.strike = strike;
 		this.timesForAveraging = timesForAveraging;
 		this.underlyingIndex = underlyingIndex;
+		this.callOrPutSign = callOrPutSign;
 	}
 
 	/**
 	 * Construct a product representing an Asian option on an asset S (where S the asset with index 0 from the model - single asset case).
 	 * A(T) = 1/n sum_{i=1,...,n} S(t_i), where t_i are given observation times.
 	 *
-	 * @param strike The strike K in the option payoff max(A(T)-K,0).
-	 * @param maturity The maturity T in the option payoff maxAS(T)-K,0)
+	 * @param strike The strike K in the option payoff max( sign * (A(T)-K), 0)
+	 * @param maturity The maturity T in the option payoff max( sign * (A(T)-K), 0)
 	 * @param timesForAveraging The times t_i used in the calculation of A(T) = 1/n sum_{i=1,...,n} S(t_i).
+	 * @param callOrPutSign The parameter sign in the payoff max( sign * (A(T)-K), 0) (usually either +1 or -1).
 	 */
-	public AsianOptionWithBSControlVariate(final Double maturity, final Double strike, final TimeDiscretization timesForAveraging) {
-		this(maturity, strike, timesForAveraging, 0);
+	public AsianOptionWithBSControlVariate(final Double maturity, final Double strike, final TimeDiscretization timesForAveraging, Double callOrPutSign) {
+		this(maturity, strike, timesForAveraging, 0, callOrPutSign);
 	}
 
 	/**
