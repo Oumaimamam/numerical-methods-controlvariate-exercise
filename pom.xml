@@ -38,7 +38,7 @@
 		<dependency>
 			<groupId>info.quantlab</groupId>
 			<artifactId>numerical-methods-lecture</artifactId>
-			<version>0.0.2-SNAPSHOT</version>
+			<version>0.0.5-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
