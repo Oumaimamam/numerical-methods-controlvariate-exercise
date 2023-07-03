@@ -14,12 +14,17 @@ In this exercise we consider a Black-Scholes model (as model) and an Asian optio
 Implement a class with the following properties:
 
 - It implements the interface `net.finmath.montecarlo.assetderivativevaluation.products.AssetMonteCarloProduct`.
-- It has a constructor taking the argument list `(final double maturity, final double strike, final TimeDiscretization timesForAveraging)`
-or `(final Double maturity, final Double strike, final TimeDiscretization timesForAveraging)`.
+- It has a constructor taking the argument list `(final double maturity, final double strike, final TimeDiscretization timesForAveraging, Double callOrPutSign)`
+or `(final Double maturity, final Double strike, final TimeDiscretization timesForAveraging, double callOrPutSign)`.
 - The `getValue` method returns the value of the corresponding Asian option using a control variate
 for the Black-Scholes model.
 
-The payoff of the Asian option is max(1/n * sum S(T_i)-K,0) paid in T, where T_i are the times in `timesForAveraging`, n is the number of times in `timesForAveraging`, T is `maturity` and K is `strike`.
+The payoff of the Asian call option is max(1/n * sum S(T_i)-K,0) paid in T, where T_i are the times in `timesForAveraging`, n is the number of times in `timesForAveraging`, T is `maturity` and K is `strike`.
+
+The payoff of the Asian put option is max(K - 1/n * sum S(T_i),0) paid in T, where T_i are the times in `timesForAveraging`, n is the number of times in `timesForAveraging`, T is `maturity` and K is `strike`.
+
+Your implementation should cover call and put by implementing the payoff 
+max( sign * ( 1/n * sum S(T_i) - K ),0) paid in T, where T_i are the times in `timesForAveraging`, n is the number of times in `timesForAveraging`, T is `maturity` and K is `strike` and sign is either +1 or -1.
 
 And most importantly
 
@@ -90,6 +95,7 @@ You may test you program with the following data.
 	private final double	maturity = 10.0;
 	private final double	strike = 1.05;
 	private final TimeDiscretization timesForAveraging = new TimeDiscretizationFromArray(5.0, 6.0, 7.0, 8.0, 9.0, 10.0);
+	private final Double	callOrPutSign = 1.0;
 ```
 
 For this model and product the value of the product is approximately &mu; = 0.372.
